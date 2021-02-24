@@ -1,12 +1,12 @@
 import { React} from 'react';
-import './Goal.css';
+import './Goal.css'
 const goal = (props) => {
 
 return(
   
     <li>
     <p>{props.goal}</p>
-    <button onClick = {props.goalDone}>Done</button>
+    <button onClick = {props.goalDone} >Done</button>
    
     </li>
 )

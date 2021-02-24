@@ -43,9 +43,16 @@ class App extends Component {
 const goals = this.state.goalList.map((goal, index) => {
   return <Goal goal = {goal} key={index} goalDone = {this.removeGoal.bind(this,goal)}/>
 })
-
-
-
+let classes = [];
+if (this.state.goalList.length <= 0){
+  classes.push('pink');
+}
+if(this.state.goalList.length){
+  classes.push('blue');
+}
+if(this.state.goalList.length >0 && this.state.goalList.length > 2){
+  classes.push('bold');
+}
 
 
     return (
@@ -55,7 +62,7 @@ const goals = this.state.goalList.map((goal, index) => {
        <Input addGoal={this.addGoal.bind(this, this.state.currentGoal)} 
        currentGoal = {(e)=> this.setCurrentGoal(e)}  value={this.state.currentGoal} />
       {goals}
-
+      <button className={classes.join(' ')}>Sup</button>
 
    
      
