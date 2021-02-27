@@ -1,10 +1,12 @@
 
 import { React,Component } from 'react';
 import './App.css';
-import Input from './Input/Input';
-import Goal from './Goal/Goal';
+// import Input from './Input/Input';
+// import Goal from './Goal/Goal'
 import styled from 'styled-components';
 import greenButton from './ButtonGreen/ButtonGreen.module.css'
+// import GoalList from './GoalList/GoalList'
+import Cockpit from './Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -16,7 +18,7 @@ class App extends Component {
   }
   setCurrentGoal = (e) => {
     this.setState({currentGoal: e.target.value});
-  
+
   
   }
   
@@ -55,9 +57,7 @@ class App extends Component {
     }
     
    `;
-const goals = this.state.goalList.map((goal, index) => {
-  return <Goal goal = {goal} key={index} goalDone = {this.removeGoal.bind(this,goal)}/>
-})
+
 let classes = [];
 if (this.state.goalList.length <= 0){
   classes.push('pink');
@@ -74,11 +74,12 @@ if(this.state.goalList.length >0 && this.state.goalList.length > 2){
     
   
      <StyledDiv>
-       <Input addGoal={this.addGoal.bind(this, this.state.currentGoal)} 
-       currentGoal = {(e)=> this.setCurrentGoal(e)}  value={this.state.currentGoal} />
-      {goals}
-      <button className={classes.join(' ')}>Sup</button>
-      <button className = {greenButton.button}>Hi</button>
+       <Cockpit addGoal ={this.addGoal.bind(this, this.state.currentGoal)}
+       currentGoal = {(e)=> this.setCurrentGoal(e)}  value={this.state.currentGoal}
+       list ={this.state.goalList} goalDone = {this.removeGoal} 
+       classesOne ={classes.join(' ')} classesTwo = {greenButton.button} />
+
+
   
 
    
